@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Duitech';
+  src: url('/fonts/Duitech-Trial.otf') format('opentype'),
+       url('/fonts/Duitech-Trial.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-primary: #111114;
+  --bg-surface: #1A1A1E;
+  --bg-elevated: #242429;
+  --bg-hover: #2C2C33;
+
+  --text-primary: #F0EDE8;
+  --text-secondary: #9C9A95;
+  --text-muted: #6B6966;
+
+  --accent: #7EB6FF;
+  --accent-light: #A8CFFF;
+  --accent-muted: rgba(126, 182, 255, 0.15);
+
+  --border: #2A2A30;
+  --border-subtle: #1F1F24;
+
+  --font-display: 'Duitech', Georgia, serif;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --fs-hero: clamp(3.5rem, 8vw, 7rem);
+  --fs-h1: clamp(2.25rem, 4.5vw, 3.5rem);
+  --fs-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --fs-h3: clamp(1.125rem, 2vw, 1.5rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-caption: 0.75rem;
+
+  --lh-display: 0.95;
+  --lh-heading: 1.1;
+  --lh-body: 1.6;
+
+  --ls-display: -0.03em;
+  --ls-heading: -0.02em;
+  --ls-body: 0;
+  --ls-caps: 0.12em;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 500ms var(--ease-out-expo);
+
+  --max-width: 1200px;
+  --content-width: 720px;
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-hover: var(--bg-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-muted: var(--accent-muted);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--accent-muted);
+  color: var(--text-primary);
+}
+
+.split-char, .split-word, .split-line {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.split-parent.hero-title {
+  font-size: clamp(4rem, 10vw, 9rem);
+}
+
+.split-parent.section-title {
+  font-size: var(--fs-h1);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.split-parent.section-title.gradient-blue .split-char {
+  background: linear-gradient(135deg, #7EB6FF, #A8CFFF, #5a9eff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.split-parent.hero-tagline {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.5;
+}
+
+.glass {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30, 40, 80, 0.4), rgba(20, 25, 50, 0.3));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(100, 180, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(80, 120, 255, 0.12), inset 0 0 30px rgba(100, 160, 255, 0.05);
+  overflow: visible;
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(100, 200, 255, 0.3), transparent);
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(100, 200, 255, 0.4), rgba(200, 100, 255, 0.3), transparent);
+  filter: blur(4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+a.hero-cta {
+  padding: 20px 48px !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #5227ff, #7eb6ff, #ff9ffc) !important;
+  background-size: 200% 200% !important;
+  border: none !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  cursor: pointer;
+}

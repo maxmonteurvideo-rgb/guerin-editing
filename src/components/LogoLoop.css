@@ -1,0 +1,114 @@
+.logoloop {
+  overflow: hidden;
+  position: relative;
+}
+
+.logoloop--horizontal {
+  width: 100%;
+}
+
+.logoloop--horizontal .logoloop__track {
+  display: flex;
+  flex-direction: row;
+  will-change: transform;
+}
+
+.logoloop--horizontal .logoloop__list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--logoloop-gap, 32px);
+  list-style: none;
+  margin: 0;
+  padding: 0 calc(var(--logoloop-gap, 32px) / 2);
+  flex-shrink: 0;
+}
+
+.logoloop--vertical .logoloop__track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.logoloop--vertical .logoloop__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--logoloop-gap, 32px);
+  list-style: none;
+  margin: 0;
+  padding: calc(var(--logoloop-gap, 32px) / 2) 0;
+  flex-shrink: 0;
+}
+
+.logoloop__item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoloop__item img {
+  height: var(--logoloop-logoHeight, 28px);
+  width: auto;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.logoloop__item:hover img {
+  opacity: 1;
+}
+
+.logoloop__node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--logoloop-logoHeight, 28px);
+}
+
+.logoloop__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoloop--fade::before,
+.logoloop--fade::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logoloop--horizontal.logoloop--fade::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--logoloop-fadeColor, var(--bg-primary, #111114)),
+    transparent
+  );
+}
+
+.logoloop--horizontal.logoloop--fade::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--logoloop-fadeColor, var(--bg-primary, #111114)),
+    transparent
+  );
+}
+
+.logoloop--scale-hover .logoloop__item {
+  transition: transform 0.2s ease;
+}
+
+.logoloop--scale-hover .logoloop__item:hover {
+  transform: scale(1.1);
+}
