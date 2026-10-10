@@ -13,22 +13,24 @@ interface VerticalProjectsProps {
 interface ReelVideoProps {
   id: number;
   src: string;
+  poster: string;
   title: string;
   isSoundOn: boolean;
   onSoundToggle: (id: number) => void;
 }
 
-function ReelVideo({ id, src, title, isSoundOn, onSoundToggle }: ReelVideoProps) {
+function ReelVideo({ id, src, poster, title, isSoundOn, onSoundToggle }: ReelVideoProps) {
   return (
     <div className="glass relative aspect-[9/16] overflow-hidden">
       <video
         src={src}
+        poster={poster}
         title={title}
         autoPlay
         muted={!isSoundOn}
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         style={{
           width: "100%",
           height: "100%",
@@ -97,6 +99,7 @@ export default function VerticalProjects({ projects }: VerticalProjectsProps) {
 
   return (
     <motion.div
+      id="shorts"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -107,7 +110,7 @@ export default function VerticalProjects({ projects }: VerticalProjectsProps) {
         className="text-accent font-sans uppercase mb-4 text-center"
         style={{ fontSize: "18px", letterSpacing: "4px", fontWeight: 500 }}
       >
-        INSTAGRAM / DAILY
+        REELS / ADS
       </motion.p>
 
       <motion.div variants={revealVariants} className="mb-10 text-center">
@@ -127,68 +130,27 @@ export default function VerticalProjects({ projects }: VerticalProjectsProps) {
         </h2>
       </motion.div>
 
-      {/* Desktop grid */}
+      {/* Une seule liste : défilement horizontal sur mobile, grille 3 colonnes sur desktop */}
       <motion.div
         variants={staggerContainer}
-        className="hidden md:grid grid-cols-3 gap-6"
-      >
-        {projects.map((project) => (
-          <motion.div key={project.id} variants={revealVariants}>
-            <ReelVideo
-              id={project.id}
-              src={project.videoUrl}
-              title={project.name}
-              isSoundOn={unmutedId === project.id}
-              onSoundToggle={handleSoundToggle}
-            />
-            <h3
-              className="font-display text-text-primary mt-3"
-              style={{ fontSize: "var(--fs-h3)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-            >
-              <ProjectTitle name={project.name} />
-            </h3>
-            <p
-              className="text-text-muted uppercase mt-1"
-              style={{ fontSize: "0.75rem", letterSpacing: "0.12em", fontWeight: 500 }}
-            >
-              {project.label}
-            </p>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Mobile horizontal scroll */}
-      <motion.div
-        variants={staggerContainer}
-        className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4"
+        className="reels-scroll flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <style>{`.scrollbar-hide::-webkit-scrollbar { display: none; }`}</style>
+        <style>{`.reels-scroll::-webkit-scrollbar { display: none; }`}</style>
         {projects.map((project) => (
           <motion.div
             key={project.id}
             variants={revealVariants}
-            className="min-w-[260px] snap-center scrollbar-hide"
+            className="min-w-[260px] snap-center md:min-w-0"
           >
             <ReelVideo
               id={project.id}
               src={project.videoUrl}
+              poster={project.poster}
               title={project.name}
               isSoundOn={unmutedId === project.id}
               onSoundToggle={handleSoundToggle}
             />
-            <h3
-              className="font-display text-text-primary mt-3"
-              style={{ fontSize: "var(--fs-h3)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-            >
-              <ProjectTitle name={project.name} />
-            </h3>
-            <p
-              className="text-text-muted uppercase mt-1"
-              style={{ fontSize: "0.75rem", letterSpacing: "0.12em", fontWeight: 500 }}
-            >
-              {project.label}
-            </p>
           </motion.div>
         ))}
       </motion.div>

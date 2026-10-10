@@ -12,7 +12,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: "Guerin.Editing — Video Editing & Motion Design",
   description:
-    "Portfolio de monteur vidéo et motion designer freelance. Montage, motion design, VSL, documentaire.",
+    "Monteur vidéo et motion designer pour créateurs business : YouTube, ads, VSL et shorts. Ils m'ont confié leurs vidéos : Yomi Denzel, Manael Posing, Baptiste IA.",
 };
 
 export default function RootLayout({

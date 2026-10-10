@@ -21,11 +21,11 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-center overflow-hidden h-[85vh]"
-      style={{ background: "#0a0a0a" }}
+      className="relative flex flex-col items-center justify-center overflow-hidden pt-32 pb-12 md:h-[85vh] md:pt-0 md:pb-0"
+      style={{ background: "#030305" }}
     >
       <div className="absolute inset-0">
-        <Orb hue={0} hoverIntensity={0.2} rotateOnHover backgroundColor="#0a0a0a" />
+        <Orb hue={0} hoverIntensity={0.2} rotateOnHover backgroundColor="#030305" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center">
@@ -45,7 +45,7 @@ export default function HeroSection() {
             text="GUERIN EDITING"
             tag="h1"
             className="font-display text-text-primary leading-[0.95] tracking-[-0.03em] hero-title"
-            splitType="chars"
+            splitType="words,chars"
             delay={40}
             duration={1}
             ease="power3.out"
@@ -87,17 +87,6 @@ export default function HeroSection() {
         </motion.a>
       </div>
 
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{ opacity: { delay: 1.2, duration: 0.5 }, y: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
-      >
-        <span className="text-text-muted text-[0.625rem] uppercase tracking-[0.12em]">Scroll</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" className="text-text-muted" strokeWidth="1.5">
-          <path d="M4 6l4 4 4-4" />
-        </svg>
-      </motion.div>
     </section>
   );
 }

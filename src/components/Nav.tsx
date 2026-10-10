@@ -13,18 +13,18 @@ const NAV_CARDS = [
   {
     label: "Portfolio",
     links: [
-      { label: "SaaS Project", href: "#projets" },
-      { label: "VSL Project", href: "#projets" },
-      { label: "Instagram Ads", href: "#projets" },
-      { label: "YouTube Long Format", href: "#projets" },
+      { label: "Selected Work", href: "#projets" },
+      { label: "Finary editing style", href: "#finary" },
+      { label: "Short format", href: "#shorts" },
     ],
   },
   {
     label: "Services",
     links: [
-      { label: "Montage vidéo", href: "#brief" },
-      { label: "Motion design", href: "#brief" },
-      { label: "Short format", href: "#brief" },
+      { label: "YouTube business", href: "#brief" },
+      { label: "Pack d'ADS", href: "#brief" },
+      { label: "Pack short organique", href: "#brief" },
+      { label: "VSL", href: "#brief" },
     ],
   },
   {

@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { Fragment } from "react";
 import { motion } from "framer-motion";
-import { horizontalProjects, verticalProjects, type HorizontalProject } from "@/data/projects";
+import { verticalProjects } from "@/data/projects";
+import { showcase } from "@/data/showcase";
 import { revealVariants, staggerContainer } from "@/lib/motion";
 import SplitText from "@/components/SplitText";
 import GradientText from "@/components/GradientText";
 import LogoLoop, { type LogoItem } from "@/components/LogoLoop";
 import "@/components/LogoLoop.css";
-import HorizontalProjectCard from "./HorizontalProject";
+import ShowcaseRow, { ShowcaseDivider } from "./ShowcaseRow";
+import FinaryStyleSection from "./FinaryStyleSection";
 import VerticalProjects from "./VerticalProjects";
-import ProjectDetail from "./ProjectDetail";
 
 const trustLogos: LogoItem[] = [
   { src: "/logos/manael.png", alt: "Manael" },
@@ -30,16 +31,14 @@ const trustLogos: LogoItem[] = [
 ];
 
 export default function ProjectsSection() {
-  const [selectedProject, setSelectedProject] = useState<HorizontalProject | null>(null);
-  const handleClose = useCallback(() => setSelectedProject(null), []);
-
   return (
     <>
       <section
         id="projets"
-        className="py-32 md:py-40"
+        className="py-32 md:py-40 overflow-x-clip"
         style={{
-          background: "radial-gradient(ellipse 60% 40% at 20% 50%, rgba(100, 50, 200, 0.12), transparent), radial-gradient(ellipse 50% 40% at 80% 50%, rgba(50, 100, 220, 0.10), transparent)",
+          background:
+            "radial-gradient(ellipse 55% 30% at 15% 20%, rgba(90, 60, 220, 0.18), transparent), radial-gradient(ellipse 50% 30% at 85% 45%, rgba(50, 110, 255, 0.16), transparent), radial-gradient(ellipse 60% 30% at 25% 80%, rgba(126, 182, 255, 0.10), transparent), #030305",
         }}
       >
         <div className="max-w-[1200px] mx-auto px-4 md:px-8">
@@ -76,23 +75,16 @@ export default function ProjectsSection() {
             </motion.div>
           </motion.div>
 
-          <div className="flex flex-col gap-20">
-            {horizontalProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 60, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-              >
-                <HorizontalProjectCard
-                  project={project}
-                  index={index}
-                  onSelect={() => setSelectedProject(project)}
-                />
-              </motion.div>
+          <div className="flex flex-col">
+            {showcase.map((item, index) => (
+              <Fragment key={item.id}>
+                {index > 0 && <ShowcaseDivider />}
+                <ShowcaseRow item={item} index={index} />
+              </Fragment>
             ))}
           </div>
+
+          <FinaryStyleSection />
 
           <div className="mt-32 md:mt-40">
             <VerticalProjects projects={verticalProjects} />
@@ -135,7 +127,6 @@ export default function ProjectsSection() {
         </div>
       </section>
 
-      <ProjectDetail project={selectedProject} onClose={handleClose} />
     </>
   );
 }

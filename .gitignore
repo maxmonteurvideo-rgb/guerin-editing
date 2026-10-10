@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# originaux vidéo non compressés — seules les versions compressées vont en ligne
+# (Windows ignore la casse : on cible les noms avec espace + les originaux nommés)
+/public/videos/* *.mp4
+/public/videos/YOMI.mp4
+/public/videos/VSL.mp4
+# ancienne version erronée de l'extrait Manael (contenait la vidéo de Baptiste)
+/public/videos/vsl-manael.mp4
+/public/videos/vsl-manael.jpg

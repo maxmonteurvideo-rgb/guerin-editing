@@ -90,8 +90,8 @@ export default function StatsSection() {
 
   return (
     <section
+      className="py-10 md:py-[120px]"
       style={{
-        padding: "120px 0",
         background:
           "radial-gradient(ellipse 60% 40% at 20% 50%, rgba(100, 50, 200, 0.12), transparent), radial-gradient(ellipse 50% 40% at 80% 50%, rgba(50, 100, 220, 0.10), transparent)",
       }}

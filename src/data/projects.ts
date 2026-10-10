@@ -18,6 +18,7 @@ export interface VerticalProject {
   name: string;
   label: string;
   videoUrl: string;
+  poster: string;
 }
 
 export const horizontalProjects: HorizontalProject[] = [
@@ -108,9 +109,9 @@ export const horizontalProjects: HorizontalProject[] = [
 ];
 
 export const verticalProjects: VerticalProject[] = [
-  { id: 1, name: "Daily Reel #1", label: "INSTAGRAM", videoUrl: "/videos/reel-1.mp4" },
-  { id: 2, name: "Daily Reel #2", label: "INSTAGRAM", videoUrl: "/videos/reel-2.mp4" },
-  { id: 3, name: "Daily Reel #3", label: "INSTAGRAM", videoUrl: "/videos/reel-3.mp4" },
+  { id: 1, name: "Football Motion", label: "INSTAGRAM", videoUrl: "/videos/short-1.mp4", poster: "/videos/short-1.jpg" },
+  { id: 2, name: "Le Chemiseur", label: "META ADS", videoUrl: "/videos/short-2.mp4", poster: "/videos/short-2.jpg" },
+  { id: 3, name: "Daily Reel #3", label: "INSTAGRAM", videoUrl: "/videos/reel-3.mp4", poster: "/videos/reel-3.jpg" },
 ];
 
 export const orbitalProjects = [
@@ -135,11 +136,6 @@ export const faqItems = [
     question: "Quels formats de fichiers acceptez-vous ?",
     answer:
       "Je travaille avec tous les formats standards : MP4, MOV, ProRes. Pour le motion design, je livre en MP4 H.264 pour le web et ProRes 4444 si vous avez besoin de la version haute qualité.",
-  },
-  {
-    question: "Travaillez-vous avec des marques internationales ?",
-    answer:
-      "Oui, je travaille régulièrement avec des clients francophones et anglophones. La communication se fait en français ou en anglais selon votre préférence.",
   },
   {
     question: "Proposez-vous des packs ou abonnements ?",

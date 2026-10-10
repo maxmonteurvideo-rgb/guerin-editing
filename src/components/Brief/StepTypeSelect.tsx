@@ -3,10 +3,10 @@
 import BriefOptionButton from "./BriefOptionButton";
 
 const OPTIONS = [
-  "Montage YouTube / Long format",
-  "Motion Design / Animation",
-  "VSL / Publicité",
-  "Short format (Reels, TikTok)",
+  "YouTube business",
+  "Pack d'ADS",
+  "Pack short organique",
+  "VSL",
   "Autre",
 ];
 

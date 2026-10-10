@@ -6,6 +6,7 @@ import BriefSection from "@/components/Brief/BriefSection";
 import FAQSection from "@/components/FAQ/FAQSection";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
+import FadeSection from "@/components/FadeSection";
 
 export default function Home() {
   return (
@@ -14,12 +15,22 @@ export default function Home() {
       <Nav />
       <main>
         <HeroSection />
-        <StatsSection />
-        <ProjectsSection />
-        <BriefSection />
-        <FAQSection />
+        <FadeSection>
+          <StatsSection />
+        </FadeSection>
+        <FadeSection>
+          <ProjectsSection />
+        </FadeSection>
+        <FadeSection>
+          <BriefSection />
+        </FadeSection>
+        <FadeSection>
+          <FAQSection />
+        </FadeSection>
       </main>
-      <Footer />
+      <FadeSection>
+        <Footer />
+      </FadeSection>
     </>
   );
 }

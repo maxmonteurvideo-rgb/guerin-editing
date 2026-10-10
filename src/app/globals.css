@@ -11,7 +11,7 @@
 }
 
 :root {
-  --bg-primary: #111114;
+  --bg-primary: #030305;
   --bg-surface: #1A1A1E;
   --bg-elevated: #242429;
   --bg-hover: #2C2C33;
@@ -116,6 +116,13 @@ body {
 
 .split-parent.hero-title {
   font-size: clamp(4rem, 10vw, 9rem);
+}
+
+/* Téléphone : « GUERIN » et « EDITING » sur deux lignes, jamais coupés au milieu d'un mot */
+@media (max-width: 767px) {
+  .split-parent.hero-title .split-word {
+    display: block !important; /* GSAP pose display:inline-block en style inline */
+  }
 }
 
 .split-parent.section-title {
